@@ -14,6 +14,8 @@ Then you can create a test file for it:
     require 'assert'
     require 'life'
     
+    include Assert
+    
     test Life do
       assert "should initialize" do |subject|
         subject.new.instance_of?(subject)
@@ -25,6 +27,8 @@ The "test" block will do some cleanup at the end for you, as well as set the "su
     # life_test.rb
     require 'assert'
     require 'life'
+    
+    include Assert
 
     test Life do
       assert "should initialize" do
