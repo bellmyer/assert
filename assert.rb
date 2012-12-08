@@ -14,7 +14,7 @@ module Assert
   def assert assertion, &block
     unless block.call(@test_subject)
       puts "\n\n"
-      raise assertion unless block.call(@test_subject)
+      raise(@test_subject.to_s + ' ' + assertion)
     end
   end
 end
