@@ -1,6 +1,6 @@
 module Assert
   def test test_subject, &block
-    @test_subject = test_subject
+    @subject = test_subject
 
     block.call
 
@@ -8,9 +8,13 @@ module Assert
   end
 
   def assert assertion, &block
-    unless block.call(@test_subject)
+    unless block.call
       puts "\n\n"
-      raise(@test_subject.to_s + ' ' + assertion)
+      raise(subject.to_s + ' ' + assertion)
     end
+  end
+
+  def subject
+    @subject
   end
 end
