@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+# load assertion library
+require './assert'
+
+include Assert
+
+# load classes to be tested
+Dir['./lib/**/*.rb'].each{ |f| require f }
+
+# load tests to be run
+Dir['./tests/**/*.rb'].each{ |f| require f }
