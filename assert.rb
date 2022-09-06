@@ -1,10 +1,8 @@
 module Assert
   def test test_subject, &block
-    @subject = test_subject
+    @subject = test_subject.is_a?(Proc) ? test_subject.call : test_subject
 
     block.call
-
-    puts "SUCCESS!"
   end
 
   def assert assertion, &block
