@@ -1,39 +1,38 @@
 Assert
 ======
 
-This is a simple module to facilitate test-driven development in ruby.  If you have a class called life:
+## Description
 
-    # life.rb
-    class Life
-    
+This is a simple module to facilitate test-driven development (TDD) in Ruby. It provides a simple
+Assert module that defines a VERY simple testing DSL, along with a test runner script. This
+is not intended for production applications, but for easing developers into TDD.
+
+## Examples
+
+There is an included Example class:
+
+    # lib/example.rb
+    class Example
     end
     
-Then you can create a test file for it:
+And an included test file for it:
 
-    # life_test.rb
-    require 'assert'
-    require 'life'
-    
-    include Assert
-    
-    test Life do
-      assert "should initialize" do |subject|
+    # tests/example_test.rb
+    test Example do
+      assert "should initialize"
         subject.new.instance_of?(subject)
       end
     end
-
-The "test" block will do some cleanup at the end for you, as well as set the "subject" that can be used within the block.  Or if "subject" is too abstract, just use the class names directly:
-
-    # life_test.rb
-    require 'assert'
-    require 'life'
     
-    include Assert
+The `test` block above defines the subject of the test, the `Example` class in this case.
+Any `assert` blocks have access to this subject automatically.
+An assert block should return true if the test passes, and false otherwise.
 
-    test Life do
-      assert "should initialize" do
-        Life.new.instance_of?(Life)
-      end
-    end
+## Running Tests
 
-The "assert" method specifies some aspect of your code that you are testing.  You pass a description that will appear if your code doesn't pass your test, and you define a block to be run.  The test passes if the block returns true.  The test fails otherwise.
+Running the test script in the home directory will load any files in the `lib` directory, 
+run any test files in the `tests` directory, and either print out "SUCCESS" or raise an
+error if it encounters a failed test:
+
+    ruby test
+
