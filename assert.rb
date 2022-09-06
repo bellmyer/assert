@@ -1,8 +1,4 @@
 module Assert
-  def color
-    true
-  end
-
   def test test_subject, &block
     @test_subject = test_subject
 
